@@ -1,0 +1,14 @@
+* SAscore Applications
+
+Use SAscore to assess the synthetic accessibility
+
+1. Ertl, P. & Schuffenhauer, A. Estimation of synthetic accessibility score of drug-like molecules based on molecular complexity and fragment contributions. J. Cheminform. 1, 1–10 (2009).
+
+* For Misagh
+
+** Source data
+/work/jaydy/dat/tars/
+
+* For Michal
+** Source data
+/work/jaydy/dat/mb_sa/
