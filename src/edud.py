@@ -69,6 +69,9 @@ class CalculateSAscore(UnTar):
         return outputs
 
     def runSA(self, ifn, ofn, error_ofn):
+        import sys
+        sys.stderr = open('/dev/null', 'w')  # silence the warnings
+
         err_ofs = open(error_ofn, 'w')
         with open(ofn, 'w') as ofs:
             with open(ifn, 'r') as ifs:
