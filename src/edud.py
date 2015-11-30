@@ -57,17 +57,18 @@ class CalculateSAscore(UnTar):
         files = glob.glob(regx)
         return files
 
+
+class SAscore4Smi(luigi.Task):
+
+    smi_path = luigi.Parameter()
+
     def requires(self):
-        return UnTar(self.task_name)
+        my_dirname = os.path.split(self.smi_path)[0]
+        task_name = my_dirname.split('/')[-2]
+        return UnTar(task_name)
 
     def output(self):
         pass
-        # smi_fns = self.getAllSmiFiles()
-        # outputs = []
-        # for smi_fn in smi_fns:
-        #     out_fn = smi_fn + '.sa.txt'
-        #     outputs.append(luigi.LocalTarget(out_fn))
-        # return outputs
 
     def runSA(self, ifn, ofn, error_ofn):
         import sys
@@ -87,25 +88,23 @@ class CalculateSAscore(UnTar):
         err_ofs.close()
 
     def run(self):
-        smi_fns = self.getAllSmiFiles()
-        for smi_fn in smi_fns:
-            out_fn = smi_fn + '.sa.txt'
-            error_ofn = smi_fn + '.sa.error'
+        out_fn = self.smi_path + '.sa.txt'
+        error_ofn = self.smi_path + '.sa.error'
 
-            if not os.path.exists(out_fn):
-                self.runSA(smi_fn, out_fn, error_ofn)
-            else:
-                if os.path.exists(error_ofn):
-                    total_lines = len(open(smi_fn, 'r').read())
-                    out_lines = len(open(out_fn, 'r').read())
-                    error_lines = len(open(error_ofn, 'r').read())
-                    if out_lines + error_lines != total_lines:
-                        self.runSA(smi_fn, out_fn, error_ofn)
+        if not os.path.exists(out_fn):
+            self.runSA(self.smi_path, out_fn, error_ofn)
+        else:
+            if os.path.exists(error_ofn):
+                total_lines = len(open(self.smi_path, 'r').read())
+                out_lines = len(open(out_fn, 'r').read())
+                error_lines = len(open(error_ofn, 'r').read())
+                if out_lines + error_lines != total_lines:
+                    self.runSA(self.smi_path, out_fn, error_ofn)
 
 
-def main(task_name):
+def main(smi_path):
     luigi.build([
-        CalculateSAscore(task_name),
+        SAscore4Smi(smi_path),
     ],
                 local_scheduler=True)
     pass

@@ -2,8 +2,8 @@
 #######################################################################
 # Begin WQ prologue section.
 #######################################################################
-#PBS -l nodes=2:ppn=20
-#PBS -l walltime=24:00:00
+#PBS -l nodes=3:ppn=20
+#PBS -l walltime=72:00:00
 #PBS -q workq
 #PBS -N edud_as
 #PBS -o /work/jaydy/working/
@@ -25,7 +25,7 @@ if [ ! -f ${WORKDIR}/wq.py ]; then
     cp /home/${USER}/Workspace/Bitbucket/wq/wq.py ${WORKDIR}
 fi
 
-FILES=${WORKDIR}/edud_jobs.txt
+FILES=${WORKDIR}/all_edud_smi_paths.txt
 TASK=${WORKDIR}/edud.py
 
 
