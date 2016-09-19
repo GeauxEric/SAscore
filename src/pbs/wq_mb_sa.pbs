@@ -2,7 +2,7 @@
 #######################################################################
 # Begin WQ prologue section.
 #######################################################################
-#PBS -l nodes=1:ppn=20
+#PBS -l nodes=1:ppn=16
 #PBS -l walltime=24:00:00
 #PBS -q workq
 #PBS -N mb_sa
@@ -16,7 +16,7 @@
 # per task on a 16-core node would allow for 4 workers). Let's assume
 # 2 threads per task, so:
 
-WPN=20
+WPN=16
 
 # Set the working directory:
 export WORKDIR=/work/jaydy/working
