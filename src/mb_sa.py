@@ -1,9 +1,13 @@
 #!/work/jaydy/anaconda2/envs/my-rdkit-env/bin/python
 
-import luigi
-import os
-import sascorer
 from rdkit import Chem
+from fp import getHexFp, convert2Bits
+
+import luigi
+import tempfile
+import os
+
+import sascorer
 
 
 class Path(luigi.Task):
@@ -14,8 +18,7 @@ class Path(luigi.Task):
         return "/work/jaydy/dat/mb_sa"
 
     def getSmiPath(self):
-        path = os.path.join(self.getDataDir(),
-                            self.task_name)
+        path = os.path.join(self.getDataDir(), self.task_name)
         return path
 
     def getTopWorkDir(self):
@@ -23,8 +26,7 @@ class Path(luigi.Task):
 
     def getWorkDir(self):
         dirname = self.task_name.split('.')[0]
-        path = os.path.join(self.getTopWorkDir(),
-                            dirname)
+        path = os.path.join(self.getTopWorkDir(), dirname)
         try:
             os.makedirs(path)
         except:
@@ -33,14 +35,11 @@ class Path(luigi.Task):
 
 
 class CalculateSAscore(Path):
-
     def output(self):
-        path = os.path.join(self.getWorkDir(),
-                            self.task_name + ".sa.txt")
+        path = os.path.join(self.getWorkDir(), self.task_name + ".sa.txt")
         return luigi.LocalTarget(path)
 
     def run(self):
-
         def runSA(ifn, ofn, error_ofn):
             err_ofs = open(error_ofn, 'w')
             with open(ofn, 'w') as ofs:
@@ -62,12 +61,36 @@ class CalculateSAscore(Path):
         runSA(ifn, ofn, error_ofn)
 
 
+class Smi2FP(CalculateSAscore):
+    def output(self):
+        path = os.path.join(self.getWorkDir(), self.task_name + ".sa.fp.txt")
+        return luigi.LocalTarget(path)
+
+    def run(self):
+        ifn = CalculateSAscore(self.task_name).output().path
+        to_write = []
+        try:
+            tmp_fn = tempfile.mkstemp(suffix='.smi')[1]
+            for line in file(ifn):
+                smi, name, sa = line.split()
+                with open(tmp_fn, 'w') as ofs:
+                    ofs.write(smi)
+                bits = convert2Bits(getHexFp(tmp_fn))
+                to_write.append("%s %s %s\n".format(bits, name, sa))
+        except Exception as d:
+            print(d)
+        finally:
+            os.remove(tmp_fn)
+
+        with open(self.output().path, 'w') as ofs:
+            ofs.writelines(to_write)
+
+
 def main(task_name):
-    luigi.build([
-        CalculateSAscore(task_name),
-    ],
-                local_scheduler=True)
-    pass
+    luigi.build(
+        [
+            CalculateSAscore(task_name), Smi2FP(task_name)
+        ], local_scheduler=True)
 
 
 if __name__ == '__main__':
