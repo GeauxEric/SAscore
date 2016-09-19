@@ -1,3 +1,10 @@
+#+STARTUP: overview
+#+TAGS: WORK(w) IMPROVEMENT(I) LIFE(l) FINANCE(f) READ(r) CODING(c)
+#+STARTUP: hidestars
+
+* Install RDKit
+https://github.com/rdkit/rdkit/blob/master/Docs/Book/Install.md
+
 * SAscore Applications
 
 Use SAscore to assess the synthetic accessibility
@@ -12,3 +19,13 @@ Use SAscore to assess the synthetic accessibility
 * For Michal
 ** Source data
 /work/jaydy/dat/mb_sa/
+
+* TODO [#A] Retrieve data
+DEADLINE: <2016-09-19 Mon>
+:LOGBOOK:
+CLOCK: [2016-09-19 Mon 09:46]--[2016-09-19 Mon 10:06] =>  0:20
+CLOCK: [2016-09-19 Mon 09:07]--[2016-09-19 Mon 09:32] =>  0:25
+CLOCK: [2016-09-16 Fri 17:05]--[2016-09-16 Fri 17:25] =>  0:20
+:END:
+
+RuntimeError: module compiled against API version 0xa but this version of numpy is 0x9
