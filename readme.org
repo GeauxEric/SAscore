@@ -23,6 +23,7 @@ Use SAscore to assess the synthetic accessibility
 * TODO [#A] Retrieve data [3/4]                                        :WORK:
 DEADLINE: <2016-09-19 Mon>
 :LOGBOOK:
+CLOCK: [2016-09-20 Tue 10:15]--[2016-09-20 Tue 10:31] =>  0:16
 CLOCK: [2016-09-19 Mon 15:00]--[2016-09-19 Mon 16:53] =>  1:53
 CLOCK: [2016-09-19 Mon 13:54]--[2016-09-19 Mon 14:22] =>  0:28
 CLOCK: [2016-09-19 Mon 09:46]--[2016-09-19 Mon 10:20] =>  0:34

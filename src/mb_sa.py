@@ -76,7 +76,7 @@ class Smi2FP(CalculateSAscore):
                 with open(tmp_fn, 'w') as ofs:
                     ofs.write(smi)
                 bits = convert2Bits(getHexFp(tmp_fn))
-                to_write.append("%s %s %s\n".format(bits, name, sa))
+                to_write.append("{} {} {}\n".format(bits, name, sa))
         except Exception as d:
             print(d)
         finally:
