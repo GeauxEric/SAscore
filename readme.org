@@ -1,5 +1,5 @@
 #+STARTUP: overview
-#+TAGS: WORK(w) IMPROVEMENT(I) LIFE(l) FINANCE(f) READ(r) CODING(c)
+#+TAGS: WORK(w) IMPROVEMENT(I) LIFE(l) FINANCE(f) READ(r) CODING(c) MIKE(m)
 #+STARTUP: hidestars
 
 * Install RDKit
@@ -20,9 +20,10 @@ Use SAscore to assess the synthetic accessibility
 ** Source data
 /work/jaydy/dat/mb_sa/
 
-* TODO [#A] Retrieve data [3/4]                                        :WORK:
+* TODO [#A] Retrieve data [5/6]                                   :WORK:MIKE:
 DEADLINE: <2016-09-19 Mon>
 :LOGBOOK:
+CLOCK: [2016-09-21 Wed 17:11]--[2016-09-21 Wed 17:30] =>  0:19
 CLOCK: [2016-09-20 Tue 10:15]--[2016-09-20 Tue 10:31] =>  0:16
 CLOCK: [2016-09-19 Mon 15:00]--[2016-09-19 Mon 16:53] =>  1:53
 CLOCK: [2016-09-19 Mon 13:54]--[2016-09-19 Mon 14:22] =>  0:28
@@ -43,4 +44,9 @@ CLOCK: [2016-09-16 Fri 17:05]--[2016-09-16 Fri 17:25] =>  0:20
       #+END_SRC
    2. [X] convert from hex to binary
       ./src/fp.py
-4. [ ] convert ~Smi2FP~
+4. [X] convert to fingerprint ~Smi2FP~
+
+5. [X] make a tar ball
+
+6. [ ] back up the final results
+
