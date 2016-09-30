@@ -20,8 +20,8 @@ Use SAscore to assess the synthetic accessibility
 ** Source data
 /work/jaydy/dat/mb_sa/
 
-* TODO [#A] Retrieve data [5/6]                                   :WORK:MIKE:
-DEADLINE: <2016-09-19 Mon>
+* DONE [#A] Retrieve data [6/6]                                   :WORK:MIKE:
+CLOSED: [2016-09-22 Thu 10:19] DEADLINE: <2016-09-19 Mon>
 :LOGBOOK:
 CLOCK: [2016-09-21 Wed 17:11]--[2016-09-21 Wed 17:30] =>  0:19
 CLOCK: [2016-09-20 Tue 10:15]--[2016-09-20 Tue 10:31] =>  0:16
@@ -48,5 +48,6 @@ CLOCK: [2016-09-16 Fri 17:05]--[2016-09-16 Fri 17:25] =>  0:20
 
 5. [X] make a tar ball
 
-6. [ ] back up the final results
+6. [X] back up the final results
+   /work/jaydy/dat/sa_score.tar.gz
 
